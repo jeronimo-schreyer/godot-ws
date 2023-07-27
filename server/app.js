@@ -5,11 +5,12 @@ var wss = new ws.Server({ port: PORT });
 
 wss.on('connection', server => {
     server.on("message", msg => {
+        console.log(msg.toString());
         server.send("pong");
     });
 
     server.on("close", (code, reason) => {
-        console.log(code, reason);
+        console.log(code, reason.toString());
     });
 });
 
